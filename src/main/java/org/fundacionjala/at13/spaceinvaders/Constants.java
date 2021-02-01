@@ -5,7 +5,7 @@ public interface Constants{
     int TIME_UNIT = 100; //0.1 Seconds
     int ALIEN_MOVING_TURN = 10;
     int ALIEN_BULLET_TURN = 10;
-    int PLAYER_BULLET_TURN = 30;
+    int PLAYER_BULLET_TURN = 5;
     int ALIENS_UPDATE_TIME = 1000;
     int BULLET_SPEED = 100;
     int SPACESHIP_SHOOT_SPEED = 200;

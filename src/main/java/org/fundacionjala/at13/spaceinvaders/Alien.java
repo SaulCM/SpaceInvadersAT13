@@ -46,4 +46,7 @@ public class Alien {
     public boolean isAlive(){
         return isAlive;
     }
+    public void die(){
+        this.isAlive = false;
+    }
 }

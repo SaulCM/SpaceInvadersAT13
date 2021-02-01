@@ -166,21 +166,42 @@ public class Space{
     public void checkBulletCollitions(){
         ArrayList<Alien> aliens = alienGroup.getAliens();
         for (int i = 0; i < bullets.size(); i++) {
-            bullet bulletPos = bullets.get(i);
-            if(bulletPos.exist()){
-                checkBulletOnBulletCollition();
-                checkBulletOnAlienCollition();
+            bullet bulletToCheck= bullets.get(i);
+            if(bulletToCheck.exist()){
+                //checkBulletOnBulletCollition(bulletToCheck);
+                if(bulletToCheck.getType().equals("Spaceship")){
+                    checkBulletOnAlienCollition(bulletToCheck);
+                }
                 checkBulletOnSpaceshipCollition();
             }
         }
     }
 
-    public void checkBulletOnBulletCollition(){
+    public void checkBulletOnBulletCollition(bullet bulletToCheck){
+        for (bullet bullet : bullets) {
+            if(!bulletToCheck.equals(bullet)){
+                if(bulletToCheck.checkCollition(bullet.getPosX(), bullet.getPosY())){
+                    bullet.ceaseToExist();
+                    bulletToCheck.ceaseToExist();
+                }
 
+            }
+        }
     }
 
-    public void checkBulletOnAlienCollition(){
+    public void checkBulletOnAlienCollition(bullet bulletToCheck){
+        ArrayList<Alien> aliens = alienGroup.getAliens();
+        for (Alien alien : aliens) {
+            if (alien.isAlive()) {
+                if(bulletToCheck.checkCollition(alien.getXPos(), alien.getYPos())){
+                    bulletToCheck.ceaseToExist();
+                    alien.die();
+                }
+            } else {
 
+            }
+
+        }
     }
 
     public void checkBulletOnSpaceshipCollition(){

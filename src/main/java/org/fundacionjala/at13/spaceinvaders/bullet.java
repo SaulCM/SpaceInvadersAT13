@@ -34,9 +34,12 @@ public class bullet{
         return this.type;
     }
 
-    public void checkCollition(int x, int y){
+    public boolean checkCollition(int x, int y){
         if(x == this.posX && y == this.posY){
-            this.bulletExist = false;
+            return true;
+        }
+        else{
+            return false;
         }
     }
     public boolean exist(){
@@ -59,6 +62,9 @@ public class bullet{
                 }
             }
         }
+    }
+    public void ceaseToExist(){
+        this.bulletExist=false;
     }
 
 }
